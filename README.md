@@ -14,7 +14,7 @@ We have been given some HTML and CSS code and we need to use Javascript to build
 It us up to us to ensure we meet the following Acceptance Criteria.
 
 ## Explanation
-When doing this homework, I felt that the proposed solution was very clunky and not well designed.  This might be a deliberate choice, but I strongly felt that a series of browser input boxes was not a very user-friendly way of gathering the choices from the user.
+When doing this homework, I felt that the proposed solution was very clunky and not well designed.  This might be a deliberate choice from when the task was originally designed, but I strongly felt that a series of browser input boxes was not a very user-friendly way of gathering the choices from the user.
 
 As a result, I added elements to the page of the original design to now include a linked slider and input box to select your password's length, and some checkboxes to select your choice for uppercase, numeric and special characters.
 
