@@ -1,8 +1,10 @@
 # Week 3 Homework: Password Generator
 
 My solution, hosted using Github Pages:
+https://raven-bootcamp.github.io/week3-homework-pword-gen/
 
 The repository for my code: 
+https://github.com/raven-bootcamp/week3-homework-pword-gen
 
 ## The Task
 Using some pre-existing code, we are to create an application (which runs in the browser) that enables a user to generate random passwords based on criteria that they’ve selected.
