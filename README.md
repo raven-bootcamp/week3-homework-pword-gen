@@ -11,6 +11,13 @@ We have been given some HTML and CSS code and we need to use Javascript to build
 
 It us up to us to ensure we meet the following Acceptance Criteria.
 
+## Explanation
+When doing this homework, I felt that the proposed solution was very clunky and not well designed.  This might be a deliberate choice, but I strongly felt that a series of browser input boxes was not a very user-friendly way of gathering the choices from the user.
+
+As a result, I added elements to the page of the original design to now include a linked slider and input box to select your password's length, and some checkboxes to select your choice for uppercase, numeric and special characters.
+
+Thus, my solution (see screenshot below) may not meet the Acceptance Criteria as literally written, but overall it is a more intuitive and friendly solution for the user.
+
 ## Acceptance Criteria
 
 ```
@@ -34,3 +41,7 @@ THEN the password is either displayed in an alert or written to the page
 We have been given the following mockup to use as we build it:
 
 ![image](assets/screenshots/03-javascript-homework-demo.png)
+
+## Solution Screenshot
+
+![image](assets/screenshots/solution-pword-gen.png)
