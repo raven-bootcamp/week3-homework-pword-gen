@@ -30,7 +30,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // build the arrays with the relevant ASCII codes, based on start and end points
 function generateRelevantRange(start, end) {
-  var array = []
+  var array = [];
   for (var i = start; i <= end; i++) {
     array.push(i);
   }
@@ -46,7 +46,7 @@ function writePassword() {
   var inclSpecial = inclSpecialElement.checked;
 
   // warn the user if their length is too small or too long, and don't go any further
-  if (pwordLength < 8 || pwordLength >128) {
+  if (pwordLength < 8 || pwordLength > 128) {
     alert("Password length needs to be between 8 and 128 characters.");
     return;
   }
@@ -68,10 +68,10 @@ function generatePassword(pwordLength, inclUpper, inclNum, inclSpecial) {
   if (inclSpecial) charCode = charCode.concat(allSpecChars);
   
   // build the new password by picking randomly from the list of available codes:
-  // (the String.fromCharCode statement is to get the code's value
+  // (the String.fromCharCode statement is to get the code's value to use in the password)
   var pwordChars = [];
   for (var v = 0; v < pwordLength; v++ ) {
-    var character = charCode[Math.floor(Math.random() * charCode.length)]
+    var character = charCode[Math.floor(Math.random() * charCode.length)];
     pwordChars.push(String.fromCharCode(character));
   }
   // return the newly build password as a string for further use
