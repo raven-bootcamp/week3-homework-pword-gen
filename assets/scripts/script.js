@@ -12,6 +12,7 @@ var allLowers = generateRelevantRange(97, 122);
 var allUppers = generateRelevantRange(65, 90);
 var allNumbers = generateRelevantRange(48, 57);
 var allSpecChars = generateRelevantRange(58, 64);
+var finalPassword = [];
 
 // sync up the length slider with the length number input,
 // so when you change one, it changes the other too
@@ -59,22 +60,25 @@ function writePassword() {
 
 // the logic of the password generation
 function generatePassword(pwordLength, inclUpper, inclNum, inclSpecial) {
-  // Start with lowercase as the default, compulsory choice
-  var charCode = allLowers;
   
-  // build the overall list of available codes based on the user's selections:
-  if (inclUpper) charCode = charCode.concat(allUppers);
-  if (inclNum) charCode = charCode.concat(allNumbers);
-  if (inclSpecial) charCode = charCode.concat(allSpecChars);
-  
-  // build the new password by picking randomly from the list of available codes:
-  // (the String.fromCharCode statement is to get the code's value to use in the password)
-  var pwordChars = [];
-  for (var v = 0; v < pwordLength; v++ ) {
-    var character = charCode[Math.floor(Math.random() * charCode.length)];
-    pwordChars.push(String.fromCharCode(character));
+  getRandomThenConvert(allLowers);
+  if (inclUpper) getRandomThenConvert(allUppers);
+  if (inclNum) getRandomThenConvert(allNumbers);
+  if (inclSpecial) getRandomThenConvert(allSpecChars);
+
+  for (var i = finalPassword.length; i < pwordLength; i++){
+    getRandomThenConvert(allLowers);
+    if (inclUpper) getRandomThenConvert(allUppers);
+    if (inclNum) getRandomThenConvert(allNumbers);
+    if (inclSpecial) getRandomThenConvert(allSpecChars);
   }
-  // return the newly build password as a string for further use
-  return pwordChars.join("");
+
+  return finalPassword.join("");
 }
 
+// function to get a random code from any of the character groups, and convert to string
+function getRandomThenConvert(codes) {
+  var character = codes[Math.floor(Math.random() * codes.length)];
+  finalPassword.push(String.fromCharCode(character));
+  return;
+}
