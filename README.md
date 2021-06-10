@@ -11,7 +11,7 @@ Using some pre-existing code, we are to create an application (which runs in the
 
 We have been given some HTML and CSS code and we need to use Javascript to build the rest.
 
-It us up to us to ensure we meet the following Acceptance Criteria.
+It is up to us to ensure we meet the following Acceptance Criteria.
 
 ## Explanation
 When doing this homework, I felt that the proposed solution was very clunky and not well designed.  This might be a deliberate choice from when the task was originally designed, but I strongly felt that a series of browser input boxes was not a very user-friendly way of gathering the choices from the user.
