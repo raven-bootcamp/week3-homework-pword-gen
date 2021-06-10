@@ -51,7 +51,7 @@ function writePassword() {
     return;
   }
 
-  // find the text area, and set its value once the password has been generated
+  // generate the password, find the text area, and set the text's value to the new password
   var password = generatePassword(pwordLength, inclUpper, inclNum, inclSpecial);
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
@@ -59,22 +59,57 @@ function writePassword() {
 
 // the logic of the password generation
 function generatePassword(pwordLength, inclUpper, inclNum, inclSpecial) {
-  // Start with lowercase as the default, compulsory choice
-  var charCode = allLowers;
   
-  // build the overall list of available codes based on the user's selections:
-  if (inclUpper) charCode = charCode.concat(allUppers);
-  if (inclNum) charCode = charCode.concat(allNumbers);
-  if (inclSpecial) charCode = charCode.concat(allSpecChars);
-  
-  // build the new password by picking randomly from the list of available codes:
-  // (the String.fromCharCode statement is to get the code's value to use in the password)
-  var pwordChars = [];
-  for (var v = 0; v < pwordLength; v++ ) {
-    var character = charCode[Math.floor(Math.random() * charCode.length)];
-    pwordChars.push(String.fromCharCode(character));
+  var finalPassword = [];
+
+  // first of all, add at least one character of the selected choices - lowercase is compulsory
+  finalPassword.push(getRandomThenConvert(allLowers));
+  if (inclUpper) finalPassword.push(getRandomThenConvert(allUppers));
+  if (inclNum) finalPassword.push(getRandomThenConvert(allNumbers));
+  if (inclSpecial) finalPassword.push(getRandomThenConvert(allSpecChars));
+
+  // determine how many spaces left in the user's requested password length
+  lengthRemaining = pwordLength - finalPassword.length;
+
+  // run this loop as long as there are spaces remaining in the password being built
+  while (lengthRemaining > 0) {
+    if (lengthRemaining > 0) {
+      finalPassword.push(getRandomThenConvert(allLowers));
+      lengthRemaining--;
+    }
+    if (inclUpper && lengthRemaining > 0) {
+      finalPassword.push(getRandomThenConvert(allUppers));
+      lengthRemaining--;
+    }
+    if (inclNum && lengthRemaining > 0) {
+      finalPassword.push(getRandomThenConvert(allNumbers));
+      lengthRemaining--;
+    }
+    if (inclSpecial && lengthRemaining > 0) { 
+      finalPassword.push(getRandomThenConvert(allSpecChars));
+      lengthRemaining--;
+    }
   }
-  // return the newly build password as a string for further use
-  return pwordChars.join("");
+  
+  // before returning the password, shuffle it to make it even more random
+  shuffleArray(finalPassword);
+
+  // save the new password as a string, with no spaces or commas dividing the characters
+  return finalPassword.join("");
 }
 
+// function to get a random ascii code from any of the character groups, and convert to string
+function getRandomThenConvert(codes) {
+  converted = [];
+  var character = codes[Math.floor(Math.random() * codes.length)];
+  converted.push(String.fromCharCode(character));
+  return converted;
+}
+
+// shuffle the array to avoid any patterns when adding the characters
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+}
